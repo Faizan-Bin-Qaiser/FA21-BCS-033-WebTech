@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(Fonts/Poppins/Poppins-SemiBold.ttf) format(ttf);
+}
+body {
+    /* overflow: hidden; */
+    font-family: 'Poppins',sans-serif;
+    /* background-image: linear-gradient(black,white) ; */
+}
+
+.glossy-container {
+    /* position: relative; */
+    /* height: 100vh; */
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* border-bottom: 2px solid black; */
+}
+.glossy-container  div.h1{
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    line-height: 80px;
+    margin-left: 30px;
+}
+.glossy-container ul {
+    line-height: 80px;
+    /* margin-right: 20px; */
+    word-spacing: 20px;
+}
+.glossy-container ul li{
+    display: inline-block;
+    margin-right:40px;
+
+}
+.glossy-container ul li a{
+    line-height: 80px;
+    color: rgb(0, 0, 0);
+    font-size: 2ex;
+}
+.glossy-container ul li a:hover{
+    text-decoration: underline;
+    font-weight: 400;
+}
+.content{
+    padding:20px;
+    text-align: center;
+    margin-top: 140px;
+    /* height: 100vh; */
+
+}
+.content h1{
+    text-align: center;
+    font-size: 60px;
+    text-transform: capitalize;
+}
+.content p{
+    color: #19817c;
+}
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 1px #3224f0;
+    }
+    50% {
+        box-shadow: 0 0 6px #3224f0, 0 0 30px #000000, 0 0 30px #3224f0;
+    }
+    100% {
+        box-shadow: 0 0 10px #3224f0;
+    }
+}
+
+.block {
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000000;
+    color: white;
+    width: 80%;
+    margin: 0 auto;
+    /* padding: 20px; */
+    text-align: center;
+    position: relative;
+    animation: glow 1s infinite; /* Adjust the animation duration as needed */
+    transition: background-color 0.3s;
+    overflow: hidden; /* Hide overflowing glow effect */
+}
+
+/* Other styles remain unchanged */
+.row {
+    display: flex;
+}
+
+.box {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-right: 2px solid #000000;
+    cursor: pointer;
+    height: 60px;
+}
+
+.box a {
+    color: rgb(0, 0, 0);
+} 
+
+.box:last-child {
+    border-right: none; 
+}
+
+.box + .box {
+    border-left: none;
+}
+
+.row + .row {
+    border-top: 2px solid #000000;
+}
+
+.box:hover {
+    background-color:rgb(255, 129, 154);
+    color: white;
+    transition: 0.75s;
+}
+
+/* Add a media query for screens with a maximum width of 768 pixels */
+@media screen and (max-width: 768px) {
+    .glossy-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .glossy-container ul {
+        margin-top: 20px;
+    }
+
+    .content {
+        margin-top: 40px;
+    }
+
+    .block {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .box {
+        border-right: none;
+        border-bottom: 2px solid #000000;
+        margin-bottom: 10px;
+    }
+
+    .row + .row {
+        border-top: none;
+    }
+}
+
+/* Add a media query for screens with a maximum width of 480 pixels */
+@media screen and (max-width: 480px) {
+    .glossy-container ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .glossy-container ul li {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .content {
+        margin-top: 20px;
+    }
+}
+
+/* Style the search input  */
+/* input[type="search"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  } */
+  
+  /* Style the search results button */
+  /* ::-webkit-search-results-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  } */
+  
+  /* Remove the default styling of the search input clear button */
+  /* ::-webkit-search-clear-button {
+    display: none;
+  }
+  input::placeholder {
+    color: #999;
+    font-style: italic;
+  } */
+    
+
