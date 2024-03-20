@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+    <script src="contact.js"></script>
 </head>
 <body>
+    <h2>Contact Us</h2>
+
+    <form id="contactForm">
+        
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
     
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" required></textarea><br>
+    
+    <input type="submit" value="Submit">
+</form>
+
 </body>
 </html>

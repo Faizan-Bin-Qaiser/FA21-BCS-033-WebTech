@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* height: 100vh; */
+}
+
+.full{
+    background-image: url(masseffect.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.form{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    float: left;
+    flex-direction: column;
+    margin-left: 190px;
+}
+.form h1{
+    color: white;
+}
+.form h2{
+    color: white;
+}
