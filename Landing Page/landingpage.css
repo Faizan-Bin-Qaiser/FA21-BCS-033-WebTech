@@ -258,4 +258,36 @@ img{
     color: white;
     border: 0px;
 }
+.carousel-inner {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+  }
+
+  .carousel-item {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+    transition: all 0.3s ease;
+  }
+
+  .carousel-item.active {
+    display: block;
+  }
+
+  .carousel-item:not(.active) {
+    display: none;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: auto; /* Adjust width as needed */
+    background: rgba(0, 0, 0, 0.5);
+    top: 50%; /* Position control buttons vertically */
+    transform: translateY(-50%);
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-image: none; /* Remove default icons */
+    color: white; /* Icon color */
+  }
   
