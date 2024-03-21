@@ -1,27 +1,26 @@
 *{
     margin: 0;
     padding: 0;
-    /* height: 100vh; */
 }
 
-.full{
+.contact{
     background-image: url(masseffect.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
 }
+.contact h2{
+    color: white;
+    margin-left: 190px;
+    padding-top: 150px;
+}
 
-.form{
+#contactForm{
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
     float: left;
     flex-direction: column;
     margin-left: 190px;
-}
-.form h1{
+    margin-top: 10px;
     color: white;
 }
-.form h2{
-    color: white;
-}
+
