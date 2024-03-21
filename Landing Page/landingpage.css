@@ -260,4 +260,10 @@ img{
     border: 0px;
 }
 
-  
+.third .lastbox{
+    background-color: white;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 60px;
+}
