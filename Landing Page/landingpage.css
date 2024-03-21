@@ -94,6 +94,12 @@ img{
     font-family: "Toybox";
     padding-top: 150px;
 }
+.second #games{
+    color: white;
+    text-align: center;
+    font-family: "Toybox";
+    padding-top: 150px;
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
@@ -198,7 +204,7 @@ img{
 
 .third{
     background-color: black;
-    height: 300vh;
+    height: 400vh;
 }
 .third h1{
     color: white;
