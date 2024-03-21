@@ -311,36 +311,29 @@ img{
     border-radius: 4px;
     background-color: white;
 }
-.glow{
-    animation-name: glow;
-    animation-duration: infinite;
-    animation-delay: -1s;
-    transition: 0.25s;
+.outer-bar{
+    width: 300px;
+    height: 20px;
+    background-color: rgb(128, 37, 37);
+    border-radius: 10px;
+    overflow: hidden;
 }
-@keyframes glow {
-    0%{
-        background-color: black;
+.outer-bar .inner-bar{
+    width: 0;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    animation: progress 3s ease infinite;
+}
+  @keyframes progress {
+    0% {
+      width: 0;
     }
-    50%{
-        background-color: white;
+    100% {
+      width: 100%;
     }
-    
-}
-.outside{
-    display: flex;
-    flex-direction: row;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    justify-content: center;
-    margin-right: 15%;
-}
-.inside{
-    display: flex;
-    flex-direction: column;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding: 70px;
-}
+  }
+
 span{
     color: black;
 }
