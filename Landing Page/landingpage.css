@@ -206,7 +206,7 @@ img{
     background-color: black;
     height: 400vh;
 }
-.third .descp{
+.third #descp{
     color: white;
     padding-top: 300px;
     font-family: "Toybox";
