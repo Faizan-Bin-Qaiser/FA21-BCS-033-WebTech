@@ -168,6 +168,24 @@ img{
     background-size: cover;
     background-position: center;
 }
+.box10{
+    background-image: url(finalfantasy.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.box11{
+    background-image: url(rdr21.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.box12{
+    background-image: url(watchdogs.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .up{
     position: relative;
     overflow: hidden;
