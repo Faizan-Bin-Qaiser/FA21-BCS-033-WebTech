@@ -1,0 +1,70 @@
+.main{
+    background-image: url(rdr2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 30px 150px 30px 150px;
+    height: 70vh;
+}
+
+.grid{
+    display: grid;
+    grid-template-rows: 80vh;
+    grid-template-columns: 50% 24% 23%;
+    padding: 30px 150px;
+    gap: 20px;
+}
+
+.box{
+    background-color: black;
+    display: flex;
+    align-items: flex-end;
+    /* flex-direction: column; */
+}
+h2{
+    color: white;
+    margin-left: 25px;
+    margin-right: 20px;
+    font-size: 35px;
+}
+h2:hover{
+    text-decoration: underline;
+}
+p{
+    color: white;
+    font: size 7px;
+}
+.gridinner{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    gap: 20px;
+}
+.boxinner{
+    /* background-color: black; */
+    width: 320px;
+}
+.image{
+    width: 100%;
+    height: 50%;
+}
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.txt p{
+    width: 100%;
+    height: 50%;
+    color: black;
+}
+
+.grid2{
+    display: grid;
+    grid-template-rows: 40vh;
+    grid-template-columns: 24% 24% 24% 24%;
+    padding: 30px 150px;
+    gap: 20px;
+}
+.boxi{
+}
