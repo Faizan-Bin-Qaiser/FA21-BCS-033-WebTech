@@ -1,0 +1,136 @@
+.navbar {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0;
+    /* margin-left: 270px; */
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navbar li {
+    margin: 0 10px;
+    position: relative;
+}
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    display: block;
+}
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 100px;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+.navbar .dropdown-content a {
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+.navbar .dropdown-content a:hover {
+    background-color: #e9ecef;
+}
+
+#below{
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 20px;
+    margin: 20px 150px 0px 150px;
+
+}
+.box1 h1{
+    font-size: 30px;
+}
+
+.box1 p{
+    font-size: 15px;
+}
+.box1 a{
+    color: black;
+    text-decoration: none;
+}
+.box1 a:hover{
+    text-decoration: underline;
+}
+.box2{
+    
+}
+.box2 .image2 img{
+    overflow: hidden;
+
+}
+.box2 h2{
+    font-size: 40px;
+}
+.heading{
+    margin-left: 150px;
+}
+
+.innergrid{
+    display: grid;
+    grid-template-rows: 4;
+}
+
+
+.txt a{
+    margin-top: 60px;
+    text-decoration: none;
+    color: black;
+}
+.txt a:hover{
+    text-decoration: underline;
+}
+
+.grid2{
+    display: grid;
+    grid-template-rows: 40vh;
+    grid-template-columns: 24% 24% 24% 24%;
+    padding: 30px 150px;
+    gap: 20px;
+}
+.grid2 img{
+    width: 40vh;
+    height: 100%;
+}
+
+.txt #news{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#news img{
+    width: 50%;
+    height: 100%;
+}
+
+.end{
+    margin-left: 150px;
+    display: flex;
+    flex-direction: row ;
+}
+.end button{
+    margin-top: 20px;
+    margin-left: 30px;
+    border-radius:10%;
+    width: 100px;
+    height: 50px;
+}
