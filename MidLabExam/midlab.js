@@ -1,4 +1,4 @@
-const menuItem = document.getElementById('menu-item');
+const menuItem = document.getElementById('render');
   const hoverImages = document.querySelectorAll('.hover');
 
   hoverImages.forEach(image => {
@@ -8,3 +8,5 @@ const menuItem = document.getElementById('menu-item');
 
     image.addEventListener('mouseleave', function() {
       menuItem.textContent = 'Main Menu'
+    });
+});
