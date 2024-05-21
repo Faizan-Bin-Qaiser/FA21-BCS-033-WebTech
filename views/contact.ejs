@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contact.css">
-    <script src="contact.js"></script>
+<%- include("includes/head.ejs") %>
+<link rel="stylesheet" href="./register.css">
 </head>
+
 <body>
-    <div class="contact">
-        <h2>Contact Us</h2>
-        <form id="contactForm">
+    <%- include("includes/navbar.ejs") %>
+    <main>
+    <div class="register">
+        <h1>Contact Us</h1>
+        <form action="/" >
             
             <label for="name">Name:</label> 
             <input type="text" id="name" name="name" required><br>
@@ -25,5 +22,4 @@
         
         </form>
     </div>
-</body>
-</html>
+</main>

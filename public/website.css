@@ -7,10 +7,9 @@
 }
 
 .wrapper{
-    background-image: url(cod\ modern\ warfare\ 2\ ghost.jpg);
+    background-image: url("images/backgroundImage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    /* font-family: ; */
 }
 .navbar.bg-body-tertiary {
     background-color: rgba(0, 0, 0, 0.635)  !important;
@@ -43,6 +42,55 @@ img{
     margin-left: 10px;
 }
 
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgb(0, 255, 0); /* Background color */
+    color: white; /* Text color */
+    padding: 8px 16px; /* Padding */
+    font-size: 16px; /* Font size */
+    border: rgb(0, 255, 0); /* No border */
+    cursor: pointer; /* Cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+    border-radius: 7px;
+}
+
+.dropbtn:hover {
+    background-color: rgb(0, 255, 0); /* Background color on hover */
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none; /* Hide by default */
+    position: absolute; /* Positioning */
+    background-color: #ffffff; /* Background color */
+    min-width: 160px; /* Minimum width */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow */
+    z-index: 1; /* Positioning */
+    transition: opacity 0.3s; /* Smooth transition */
+    opacity: 0; /* Start with opacity 0 */
+}
+
+/* Show the dropdown content when the dropdown button is clicked */
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Set opacity to 1 when dropdown is shown */
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+    color: #000000; /* Text color */
+    padding: 12px 16px; /* Padding */
+    text-decoration: none; /* No underline */
+    display: block; /* Block element */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Background color on hover */
+}
+
+
 .main{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.637);
@@ -68,25 +116,35 @@ img{
     color: rgb(0, 255, 0);
 }
 .main .btn-primary{
-    /* width: 30px; */
-    /* font-family: "Outfit-Regular"; */
     font-weight: 700;
     border: 2px solid rgb(0, 255, 0);
-    /* background-color: rgb(0, 255, 0); */
     background-color: transparent;
     color: white;
     
 }
 .main .btn-primary:hover{
-    /* background-color: white;
-    color: rgb(0, 255, 0); */
     border: none;
     background-color: rgb(0, 255, 0);
-
 }
+
 .second{
     background-color: black;
     height: 350vh;
+}
+.second .gamesbutton{
+    display: flex;
+    flex-direction: column;
+}
+.gamesbutton .btn-primary{
+    font-weight: 700;
+    background-color: rgb(0, 255, 0);
+    color: white;
+    border: none;
+}
+.gamesbutton .btn-primary:hover{
+    border: none;
+    background-color: white;
+    color: rgb(0, 255, 0);
 }
 .second h1{
     color: white;
@@ -115,73 +173,73 @@ img{
     font-size: 30px;
 }   
 .box1 {
-    background-image: url(694711.jpg);
+    /* background-image: url("images/694711.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; 
 }
 .box2{
-    background-image: url(assicreed2.jpg);
+    background-image: url("images/assicreed2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 } 
 .box3{
-    background-image: url(anthem.jpg);
+    background-image: url("images/anthem.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
 } 
 .box4{
-    background-image: url(masseffect.jpg);
+    background-image: url("images/masseffect.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 } 
 .box5{
-    background-image: url(lilnightmares.jpg);
+    background-image: url("images/lilnightmares.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box6{
-    background-image: url(watchdogs.jpg);
+    background-image: url("images/watchdogs.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box7{
-    background-image: url(kayo\ valo.png);
+    background-image: url("images/kayo valo.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box8{
-    background-image: url(710281.jpg);
+    background-image: url("images/710281.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box9{
-    background-image: url(hitman3.jpg);
+    background-image: url("images/hitman3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box10{
-    background-image: url(finalfantasy.jpg);
+    background-image: url("images/finalfantasy.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box11{
-    background-image: url(rdr21.jpg);
+    background-image: url("images/rdr21.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .box12{
-    background-image: url(watchdogs.jpg);
+    background-image: url("images/watchdogs.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -196,7 +254,6 @@ img{
     bottom: -100%;
     left: 0;
     width: 100%;
-    /* background-color: rgba(255, 255, 255, 0.9); */
     background-color:rgba(0, 0, 0, 0.811);
     color: white;
     padding: 20px;
@@ -213,7 +270,6 @@ img{
 }
 .up .content .btn-primary{
     background-color: rgb(0, 255, 0);
-    /* border-color: ; */
     border: 0px;
     color: white;
 }  
@@ -284,7 +340,32 @@ img{
     background-color: black;
 }
 .fourth .lastbox{
-    background-color: white;
+    background-color: rgb(0, 255, 0);
     width: 100%;
-    height: 60px;
+    height: 60vh;
+}
+.lastbox .gridd1{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    
+}
+
+.lastbox .gridd1 .boxx1{
+    margin-left: 60px;
+    margin-top: 40px;
+    text-align: left;
+}
+.lastbox .gridd1 .boxx1 h1{
+    font-family: "ToyBox";
+    color: black;
+    font-size: 50px;
+}
+.lastbox .gridd1 .boxx1 a{
+    font-family: "Outfit-Regular";
+    color: black;
+    text-decoration: none;
+}
+.lastbox .gridd1 .boxx1 a:hover{
+    color: rgba(0, 0, 0, 0.575);
+    text-decoration: underline;
 }

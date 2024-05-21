@@ -1,0 +1,35 @@
+<%- include("includes/head.ejs") %>
+</head>
+
+<body>
+    <%- include("includes/navbar.ejs") %>
+    <%- console.log(games)%>
+    <h1>Games</h1>
+    <!-- <div id="games-list">
+        <% games.forEach(game => { %>
+            <div>
+                <h2><%= game.name %></h2>
+                <p><%= game.description %></p>
+                <img src="<%= game.image %>" alt="<%= game.name %> image">
+                <a href="<%= game.buyLink %>">Buy Now</a>
+            </div>
+        <% }) %>
+    </div> -->
+
+    <div class="grid text-center">
+        <% games.forEach(game => { %>
+        <div class="g-col-4 box1 up" href="images/694711.jpg">
+          <div class="content">
+            <h2><%= game.name %></h2>
+            <p><%= game.description %></p>
+            <img src="<%= game.image %>" alt="<%= game.name %> image">
+            <a href="<%= game.buyLink %>">Buy Now</a>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+
+</body>
+</html>
+
+

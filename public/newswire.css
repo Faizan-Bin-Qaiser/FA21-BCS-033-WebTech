@@ -1,0 +1,9 @@
+@import url(ToyBox.ttf);
+@import url(Outfit-Regular.ttf);
+
+.login h1 {
+    text-align: center;
+    font-size: 60px;
+    font-family: "Toybox";
+    color: rgb(0, 255, 0);
+}

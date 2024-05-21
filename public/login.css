@@ -1,0 +1,87 @@
+@import url(ToyBox.ttf);
+@import url(Outfit-Regular.ttf);
+
+main {
+    margin: 0;
+    padding: 0;
+    font-family: "Outfit-Regular";
+    height: 92vh; 
+    background-image: url('images/watchdogs.jpg'); 
+    background-size: cover; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-image: linear-gradient(rgba(0,0,0,0.5),(0,0,0,0.5))
+    
+}
+
+.login {
+    background-color: rgba(255, 255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    max-width: 400px; /* Limit width of the login box */
+
+}
+
+.login h1 {
+    text-align: center;
+    font-size: 60px;
+    font-family: "Toybox";
+    color: rgb(0, 255, 0);
+}
+
+.login form {
+    margin-top: 20px;
+}
+
+.login form div {
+    margin-bottom: 10px;
+}
+
+.login form label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.login form input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login form button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(0, 255, 0);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login form button:hover {
+    background-color: white; /* Darker shade on hover */
+    color: rgb(0, 255, 0)
+}
+
+.login p {
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+}
+
+.login p a{
+    text-decoration: none;
+    color: rgb(0, 255, 0);
+    font-weight: bold;
+}
+
+.login p a:hover{
+    text-decoration: underline;
+}
+
+
