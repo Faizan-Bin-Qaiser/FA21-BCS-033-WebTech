@@ -42,6 +42,7 @@
     "minimatch": "^3.1.2",
     "mongoose": "^8.4.0",
     "ms": "^2.1.2",
+    "multer": "^1.4.5-lts.1",
     "nopt": "^1.0.10",
     "normalize-path": "^3.0.0",
     "picomatch": "^2.3.1",
