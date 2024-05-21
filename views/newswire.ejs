@@ -7,11 +7,11 @@
     <h1>News</h1>
     <div id="news-list">
         <% newsItems.forEach(news => { %>
-            <div>
+            <div class="containerN">
+                <img src="<%= news.image %>" alt="<%= news.name %> image" class="hover-image">
+                <div class="info">
                 <h2><%= news.name %></h2>
                 <p><%= news.content %></p>
-                <img src="<%= news.image %>" alt="<%= news.name %> image">
-                <p>Published Date: <%= new Date(news.publishedDate).toDateString() %></p>
             </div>
         <% }) %>
     </div>
