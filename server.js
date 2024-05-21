@@ -50,6 +50,14 @@ app.use(authRoutes);
 const {uploadOnCloudinary} = require("./utils/cloudinaryConfig");
 const {upload} = require("./middleware/multerConfig");
 
+function isAuthenticated(req, res, next) {
+  if (req.session && req.session.user) {
+      return next();
+  } else {
+      res.send(`<script>alert("User not logged in!"); window.location.href = "/login";</script>`);
+  }
+}
+
 // Routes
 app.use('/games', gamesRouter);
 // app.get('/games', (req, res) => {

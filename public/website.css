@@ -178,6 +178,12 @@ img{
     background-size: cover;
     background-position: center; 
 }
+.boxd {
+    background-image: url("images/694711.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+}
 .box2{
     background-image: url("images/assicreed2.jpg");
     background-repeat: no-repeat;
@@ -226,24 +232,42 @@ img{
     background-size: cover;
     background-position: center;
 }
-.box10{
-    background-image: url("images/finalfantasy.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+.scrolling-container {
+    width: 100%; /* Full width of the container */
+    overflow: hidden; /* Hide anything outside the container */
+    position: relative;
+    height: 100px; /* Set a fixed height based on your logos' size */
+    box-shadow: 10px 2px 12px rgba(0, 0, 0, 0.191),0 2px 20px rgba(0, 0, 0, 0.21);
+    background: honeydew;
 }
-.box11{
-    background-image: url("images/rdr21.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+
+.scrolling-wrapper {
+    display: flex;
+    white-space: nowrap; /* Ensure logos stay in a single line */
+    animation: scrollLogo 30s linear infinite; /* Adjust time for speed */
 }
-.box12{
-    background-image: url("images/watchdogs.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+
+.logo-group {
+    display: flex; /* Display logos in a line */
+    padding-left: 100%; /* Gap before logos start scrolling */
 }
+
+.scrolling-wrapper img {
+    width: auto; /* Maintain original image aspect ratio */
+    height: 80px; /* Adjust based on your preference */
+    margin-right: 200px; /* Space between logos */
+    padding-top: 20px;
+}
+
+@keyframes scrollLogo {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-200%); /* Move twice the ini */
+    }
+}
+
 .up{
     position: relative;
     overflow: hidden;
