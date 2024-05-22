@@ -14,34 +14,21 @@ router.get('/', async (req, res) => {
 });
 
 // Get one game
-router.get('/:id', async (req, res) => {
-    try {
-        const game = await Game.findById(req.params.id);
-        if (game == null) {
-            return res.status(404).json({ message: 'Cannot find game' });
-        }
-        res.json(game);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-// Create a game (Admin only)
 router.get('/create', adminCheck, (req, res) => {
     res.render('createGame');
 });
 
+// Handle form submission for creating a new game
 router.post('/create', adminCheck, async (req, res) => {
     const game = new Game({
         name: req.body.name,
         description: req.body.description,
-        image: req.body.image,
-        buyLink: req.body.buyLink
+        image: req.body.image
     });
 
     try {
         const newGame = await game.save();
-        res.status(201).json(newGame);
+        res.redirect('/games'); // Redirect to games list after successful creation
     } catch (err) {
         res.status(400).json({ message: err.message });
     }

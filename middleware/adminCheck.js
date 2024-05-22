@@ -1,4 +1,3 @@
-// middlewares/adminCheck.js
 module.exports = (req, res, next) => {
     if (req.session.userId) {
       User.findById(req.session.userId)
