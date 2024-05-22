@@ -3,23 +3,34 @@
 
 <body>
     <%- include("includes/navbar.ejs") %>
-    <%- console.log(games)%>
     <h1 id="games">Games</h1>
 
     <div class="grid text-center">
         <% games.forEach(game => { %>
-        <div class="g-col-4 box1 up" style = "background-image: url(<%=game.image%>)">
+        <div class="g-col-4 box1 up" style="background-image: url(<%=game.image%>)">
           <div class="content">
             <h2><%= game.name %></h2>
             <p><%= game.description %></p>
             <button class="btn btn-primary" href="<%= game.buyLink %>">Buy Now</button>
-            <!-- <a href="<%= game.buyLink %>">Buy Now</a> -->
+            <% if (locals.user && locals.user.isAdmin) { %>
+            <button type="button" class="btn btn-secondary">
+                <a href="/games/edit/<%= game._id %>">Edit</a>
+            </button>
+            <form action="/games/delete/<%= game._id %>" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <% } %>
           </div>
         </div>
         <% }) %>
     </div>
 
+    <% if (locals.user && locals.user.isAdmin) { %>
+    <div class="create-game">
+        <button type="button" class="btn btn-success">
+            <a href="/games/create">Create New Game</a>
+        </button>
+    </div>
+    <% } %>
 </body>
 </html>
-
-

@@ -10,8 +10,8 @@ module.exports = (app, isAuthenticated) => {
     app.post('/login', (req, res) => {
         const { username, password } = req.body;
         // Assume you validate username and password here
-        if (username === "admin" && password === "password123") {
-            req.session.user = { id: 1, username: "admin" };
+        if (username === "Faizan Bin Qaiser" && password === "faizan123") {
+            req.session.user = { id: 1, username: "Faizan Bin Qaiser" };
             res.redirect('/contact');
         } else {
             res.send("Invalid username or password");

@@ -1,18 +1,46 @@
 <%- include("includes/head.ejs") %>
+<link rel="stylesheet" href="./newswire.css">
 </head>
 
 <body>
     <%- include("includes/navbar.ejs") %>
 
-    <h1>News</h1>
-    <div id="news-list">
-        <% newsItems.forEach(news => { %>
-            <div class="containerN">
-                <img src="<%= news.image %>" alt="<%= news.name %> image" class="hover-image">
-                <div class="info">
-                <h2><%= news.name %></h2>
-                <p><%= news.content %></p>
-            </div>
-        <% }) %>
+    <div class="third">
+        <h1 id="descp">NEWSWIRE</h1>
+        <br>
+        <div class="image-container">
+            <% newsItems.forEach(news => { %>
+                <div class="news-item">
+                    <img src="<%= news.image %>" alt="<%= news.name %> image">
+                    <div class="overlay">
+                        <div class="text">
+                            <h1><%= news.name %></h1>
+                            <p><%= news.content %></p>
+                        </div>
+                        <button type="button" class="btn btn-primary">
+                            <a href="https://wikipedia.com" target="_blank">Read Article</a>
+                        </button>
+                        <% if (locals.user && locals.user.isAdmin) { %>
+                        <button type="button" class="btn btn-secondary">
+                            <a href="/news/edit/<%= news._id %>">Edit</a>
+                        </button>
+                        <form action="/news/delete/<%= news._id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <% if (locals.user && locals.user.isAdmin) { %>
+        <div class="create-news">
+            <button type="button" class="btn btn-success">
+                <a href="/news/create">Create New Article</a>
+            </button>
+        </div>
+        <% } %>
+        <br>
+        <br>
     </div>
-    
+</body>
+</html>

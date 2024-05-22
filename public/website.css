@@ -303,11 +303,11 @@ img{
 
 .third{
     background-color: black;
-    height: 300vh;
+    /* height: 300vh; */
 }
 .third #descp{
     color: white;
-    padding-top: 300px;
+    padding-top: 20px;
     font-family: "Toybox";
     text-align: center;
 }
@@ -359,47 +359,6 @@ img{
     border: 0px;
 }
 
-
-.containerN {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Ensures nothing hangs outside the container */
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: #f0f0f0; */
-}
-
-.hover-image {
-    width: 300px;
-    transition: transform 0.5s ease-in-out;
-    will-change: transform; /* Optimizes animations */
-}
-
-.info {
-    position: absolute;
-    right: 0;
-    white-space: nowrap;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border: 1px solid #ccc;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
-    opacity: 0; /* Initially hidden */
-}
-
-.containerN:hover .hover-image {
-    transform: translateX(-50%); /* Moves image to the left */
-}
-
-.containerN:hover .info {
-    transform: translateX(0); /* Brings text into view */
-    opacity: 1; /* Makes text visible */
-}
 
 
 .fourth{
