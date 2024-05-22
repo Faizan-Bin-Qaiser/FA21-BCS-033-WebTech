@@ -1,44 +1,55 @@
 <%- include("includes/head.ejs") %>
 <link rel="stylesheet" href="./newswire.css">
 </head>
-
 <body>
     <%- include("includes/navbar.ejs") %>
 
     <div class="third">
         <h1 id="descp">NEWSWIRE</h1>
-        <br>
-        <div class="image-container">
+        
+        <% if (isAdmin = 'true') { %>
+            <a href="/createGame" class="btn btn-primary">Create News</a>
+        <% } %>
+
+        <div class="news-container">
             <% newsItems.forEach(news => { %>
                 <div class="news-item">
-                    <img src="<%= news.image %>" alt="<%= news.name %> image">
-                    <div class="overlay">
-                        <div class="text">
-                            <h1><%= news.name %></h1>
-                            <p><%= news.content %></p>
-                        </div>
+                    <img src="<%= news.image %>" alt="<%= news.name %> image" class="news-image">
+                    <div class="news-content">
+                        <h1><%= news.name %></h1>
+                        <p><%= news.content %></p>
                         <button type="button" class="btn btn-primary">
                             <a href="https://wikipedia.com" target="_blank">Read Article</a>
                         </button>
-                        <% if (locals.user && locals.user.isAdmin) { %>
-                        <button type="button" class="btn btn-secondary">
-                            <a href="/news/edit/<%= news._id %>">Edit</a>
-                        </button>
-                        <form action="/news/delete/<%= news._id %>" method="POST" style="display:inline;">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <% if (isAdmin = "true") { %>
+                            <a href="/newswire/edit/<%= news._id %>" class="btn btn-warning">Edit</a>
+                            <form action="/newswire/<%= news._id %>" method="POST" style="display:inline;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         <% } %>
                     </div>
                 </div>
             <% }) %>
         </div>
-        <% if (locals.user && locals.user.isAdmin) { %>
-        <div class="create-news">
-            <button type="button" class="btn btn-success">
-                <a href="/news/create">Create New Article</a>
-            </button>
+
+        <div class="pagination">
+            <% if (currentPage > 1) { %>
+                <a href="?page=<%= currentPage - 1 %>">Previous</a>
+            <% } %>
+            
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <% if (i === currentPage) { %>
+                    <span><strong><%= i %></strong></span>
+                <% } else { %>
+                    <a href="?page=<%= i %>"><%= i %></a>
+                <% } %>
+            <% } %>
+
+            <% if (currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>">Next</a>
+            <% } %>
         </div>
-        <% } %>
         <br>
         <br>
     </div>

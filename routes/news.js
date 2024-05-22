@@ -3,50 +3,47 @@ const router = express.Router();
 const News = require('../models/newsModel');
 const adminCheck = require('../middleware/adminCheck');
 
-// Get all games
+// Get all news with pagination
 router.get('/', async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 3;
+
     try {
-        const news = await News.find();
-        res.render('newswire', { newsItems: news });
+        const newsItems = await News.find()
+            .skip((page - 1) * limit)
+            .limit(limit);
+        const totalNews = await News.countDocuments();
+
+        res.render('newswire', {
+            newsItems: newsItems,
+            currentPage: page,
+            totalPages: Math.ceil(totalNews / limit),
+            isAdmin: req.session.user && req.session.user.isAdmin
+        });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
-// Create news
-router.get('/create', adminCheck, (req, res) => {
-    res.render('createNews');
-});
 
-router.post('/create', adminCheck, async (req, res) => {
-    const news = new News({
-        name: req.body.name,
-        content: req.body.content,
-        image: req.body.image
-    });
-
-    try {
-        const newNews = await news.save();
-        res.redirect('/news');
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
-
-// Edit news
+// Create news (admin only)
 router.get('/edit/:id', adminCheck, async (req, res) => {
     try {
         const news = await News.findById(req.params.id);
-        res.render('editNews', { news: news });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+        if (!news) {
+            return res.status(404).json({ error: 'News not found' });
+        }
+        res.render('createGame', { news: news });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
+// Route to handle the edit form submission
 router.post('/edit/:id', adminCheck, async (req, res) => {
     try {
         const news = await News.findById(req.params.id);
-        if (news == null) {
-            return res.status(404).json({ message: 'Cannot find news' });
+        if (!news) {
+            return res.status(404).json({ error: 'News not found' });
         }
 
         news.name = req.body.name;
@@ -54,22 +51,47 @@ router.post('/edit/:id', adminCheck, async (req, res) => {
         news.image = req.body.image;
 
         await news.save();
-        res.redirect('/news');
+        res.redirect('/newswire'); 
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Update news (admin only)
+router.patch('/:id', adminCheck, async (req, res) => {
+    try {
+        const news = await News.findById(req.params.id);
+        if (!news) {
+            return res.status(404).json({ message: 'Cannot find news' });
+        }
+
+        if (req.body.name != null) {
+            news.name = req.body.name;
+        }
+        if (req.body.content != null) {
+            news.content = req.body.content;
+        }
+        if (req.body.image != null) {
+            news.image = req.body.image;
+        }
+
+        const updatedNews = await news.save();
+        res.json(updatedNews);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
 
-// Delete news
-router.post('/delete/:id', adminCheck, async (req, res) => {
+// Delete news (admin only)
+router.delete('/:id', adminCheck, async (req, res) => {
     try {
         const news = await News.findById(req.params.id);
-        if (news == null) {
+        if (!news) {
             return res.status(404).json({ message: 'Cannot find news' });
         }
 
         await news.remove();
-        res.redirect('/news');
+        res.json({ message: 'Deleted news' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

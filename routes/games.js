@@ -3,9 +3,9 @@ const router = express.Router();
 const Game = require('../models/gameModel');
 const adminCheck = require('../middleware/adminCheck');
 
-// Get all games
+// Get all games with pagination
 router.get('/', async (req, res) => {
-    const page = parseInt(req.query.page) || 1;  // Default to page 1 if no page is specified
+    const page = parseInt(req.query.page) || 1;
     const limit = 9;
 
     try {
@@ -17,73 +17,67 @@ router.get('/', async (req, res) => {
         res.render('games', {
             games: games,
             currentPage: page,
-            totalPages: Math.ceil(totalGames / limit)
+            totalPages: Math.ceil(totalGames / limit),
+            isAdmin: req.session.user && req.session.user.isAdmin
         });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
-// Get one game
-router.get('/create', adminCheck, (req, res) => {
-    res.render('createGame');
-});
-
-// Handle form submission for creating a new game
-router.post('/create', adminCheck, async (req, res) => {
+// Create a game (admin only)
+router.post('/', adminCheck, async (req, res) => {
     const game = new Game({
         name: req.body.name,
         description: req.body.description,
-        image: req.body.image
+        image: req.body.image,
     });
 
     try {
         const newGame = await game.save();
-        res.redirect('/games'); // Redirect to games list after successful creation
+        res.status(201).json(newGame);
+
+        res.render("createGame")
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
 
-// Edit a game (Admin only)
-router.get('/edit/:id', adminCheck, async (req, res) => {
+// Update a game (admin only)
+router.patch('/:id', adminCheck, async (req, res) => {
     try {
         const game = await Game.findById(req.params.id);
-        res.render('editGame', { game: game });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-router.post('/edit/:id', adminCheck, async (req, res) => {
-    try {
-        const game = await Game.findById(req.params.id);
-        if (game == null) {
+        if (!game) {
             return res.status(404).json({ message: 'Cannot find game' });
         }
 
-        game.name = req.body.name;
-        game.description = req.body.description;
-        game.image = req.body.image;
-        game.buyLink = req.body.buyLink;
+        if (req.body.name != null) {
+            game.name = req.body.name;
+        }
+        if (req.body.description != null) {
+            game.description = req.body.description;
+        }
+        if (req.body.image != null) {
+            game.image = req.body.image;
+        }
 
-        await game.save();
-        res.redirect('/games');
+        const updatedGame = await game.save();
+        res.json(updatedGame);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });
 
-// Delete a game (Admin only)
-router.post('/delete/:id', adminCheck, async (req, res) => {
+// Delete a game (admin only)
+router.delete('/:id', adminCheck, async (req, res) => {
     try {
         const game = await Game.findById(req.params.id);
-        if (game == null) {
+        if (!game) {
             return res.status(404).json({ message: 'Cannot find game' });
         }
 
         await game.remove();
-        res.redirect('/games');
+        res.json({ message: 'Deleted game' });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

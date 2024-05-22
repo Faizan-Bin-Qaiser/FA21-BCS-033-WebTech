@@ -58,6 +58,7 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+
 // Routes
 app.use('/games', gamesRouter);
 // app.get('/games', (req, res) => {

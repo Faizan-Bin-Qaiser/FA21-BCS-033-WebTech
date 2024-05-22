@@ -1,55 +1,50 @@
 <%- include("includes/head.ejs") %>
 </head>
-
 <body>
     <%- include("includes/navbar.ejs") %>
     <h1 id="games">Games</h1>
 
+    <% if (isAdmin = 'true') { %>
+        <a href="/games/create" class="btn btn-primary">Create Game</a>
+    <% } %>
+
     <div class="grid text-center">
         <% games.forEach(game => { %>
-        <div class="g-col-4 box1 up" style="background-image: url(<%=game.image%>)">
-          <div class="content">
-            <h2><%= game.name %></h2>
-            <p><%= game.description %></p>
-            <button class="btn btn-primary" href="<%= game.buyLink %>">Buy Now</button>
-            <% if (locals.user && locals.user.isAdmin) { %>
-            <button type="button" class="btn btn-secondary">
-                <a href="/games/edit/<%= game._id %>">Edit</a>
-            </button>
-            <form action="/games/delete/<%= game._id %>" method="POST" style="display:inline;">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-            <% } %>
-          </div>
-        </div>
+            <div class="g-col-4 box1 up" style="background-image: url(<%=game.image%>)">
+                <div class="content">
+                    <h2><%= game.name %></h2>
+                    <p><%= game.description %></p>
+                    <button class="btn btn-primary">
+                        <a href="/download/<%= game._id %>" download>Buy Now</a>
+                    </button>
+                    <% if (isAdmin = 'true') { %>
+                        <a href="/games/edit/<%= game._id %>" class="btn btn-warning">Edit</a>
+                        <form action="/games/<%= game._id %>" method="POST" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
         <% }) %>
     </div>
 
-    <% if (locals.user && locals.user.isAdmin) { %>
-    <div class="create-game">
-        <button type="button" class="btn btn-success">
-            <a href="/games/createGame">Create New Game</a>
-        </button>
-    </div>
-    <% } %>
-
-
     <div class="pagination">
-      <% if (currentPage > 1) { %>
-          <a href="?page=<%= currentPage - 1 %>">Previous</a>
-      <% } %>
-      
-      <% for (let i = 1; i <= totalPages; i++) { %>
-          <% if (i === currentPage) { %>
-              <span><strong><%= i %></strong></span>
-          <% } else { %>
-              <a href="?page=<%= i %>"><%= i %></a>
-          <% } %>
-      <% } %>
+        <% if (currentPage > 1) { %>
+            <a href="?page=<%= currentPage - 1 %>">Previous</a>
+        <% } %>
+        
+        <% for (let i = 1; i <= totalPages; i++) { %>
+            <% if (i === currentPage) { %>
+                <span><strong><%= i %></strong></span>
+            <% } else { %>
+                <a href="?page=<%= i %>"><%= i %></a>
+            <% } %>
+        <% } %>
 
-      <% if (currentPage < totalPages) { %>
-          <a href="?page=<%= currentPage + 1 %>">Next</a>
-      <% } %>
-  </div>
+        <% if (currentPage < totalPages) { %>
+            <a href="?page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+    </div>
 </body>
 </html>
