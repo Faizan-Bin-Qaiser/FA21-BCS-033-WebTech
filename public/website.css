@@ -417,3 +417,20 @@ img{
     height: 50px;
     text-align: center;
 }
+
+.footer{
+    background-color: rgb(0, 255, 0);
+    color: white;
+    position: relative;
+    bottom: 0;
+    padding: 20px;
+}
+.footer h1{
+    font-family: "Toybox";
+    text-align: center;
+}
+.footer p{
+    font-family: "Outfit-Regular";
+    text-align: center;
+
+}

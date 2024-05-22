@@ -69,14 +69,14 @@ router.patch('/:id', adminCheck, async (req, res) => {
 });
 
 // Delete a game (admin only)
-router.delete('/:id', adminCheck, async (req, res) => {
+router.post('/delete/:id', async (req, res) => {
     try {
-        const game = await Game.findById(req.params.id);
+        const game = await Game.findByIdAndDelete(req.params.id);
         if (!game) {
             return res.status(404).json({ message: 'Cannot find game' });
         }
 
-        await game.remove();
+        // await game.remove();
         res.json({ message: 'Deleted game' });
     } catch (err) {
         res.status(500).json({ message: err.message });

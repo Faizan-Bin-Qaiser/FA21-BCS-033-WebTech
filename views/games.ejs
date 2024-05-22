@@ -1,8 +1,8 @@
 <%- include("includes/head.ejs") %>
 </head>
-<body>
+<body style="background-color: black;">
     <%- include("includes/navbar.ejs") %>
-    <h1 id="games">Games</h1>
+    <h1 id="games" style="color: white;">Games</h1>
 
     <% if (isAdmin = 'true') { %>
         <a href="/games/create" class="btn btn-primary">Create Game</a>
@@ -19,7 +19,7 @@
                     </button>
                     <% if (isAdmin = 'true') { %>
                         <a href="/games/edit/<%= game._id %>" class="btn btn-warning">Edit</a>
-                        <form action="/games/<%= game._id %>" method="POST" style="display:inline;">
+                        <form action="/games/delete/<%= game._id %>" method="POST" style="display:inline;">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
@@ -46,5 +46,7 @@
             <a href="?page=<%= currentPage + 1 %>">Next</a>
         <% } %>
     </div>
+
+    <%- include("includes/footer.ejs") %>
 </body>
 </html>

@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Create news (admin only)
+// Create news admin bhai
 router.get('/edit/:id', adminCheck, async (req, res) => {
     try {
         const news = await News.findById(req.params.id);
@@ -57,7 +57,7 @@ router.post('/edit/:id', adminCheck, async (req, res) => {
     }
 });
 
-// Update news (admin only)
+// Update news for ad,min
 router.patch('/:id', adminCheck, async (req, res) => {
     try {
         const news = await News.findById(req.params.id);
@@ -82,15 +82,14 @@ router.patch('/:id', adminCheck, async (req, res) => {
     }
 });
 
-// Delete news (admin only)
-router.delete('/:id', adminCheck, async (req, res) => {
+// Delete news for admin
+router.post('/delete/:id', adminCheck, async (req, res) => {
     try {
-        const news = await News.findById(req.params.id);
+        const news = await News.findByIdAndDelete(req.params.id);
         if (!news) {
             return res.status(404).json({ message: 'Cannot find news' });
         }
 
-        await news.remove();
         res.json({ message: 'Deleted news' });
     } catch (err) {
         res.status(500).json({ message: err.message });
