@@ -395,3 +395,25 @@ img{
     color: rgba(0, 0, 0, 0.575);
     text-decoration: underline;
 }
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.pagination span{
+    padding: 0 20 0 20;
+}
+.pagination a{
+    background-color: rgb(0, 255, 0);
+    color: white;
+    border-color: none;
+    border-radius: 10px;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+}

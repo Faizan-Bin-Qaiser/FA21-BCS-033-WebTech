@@ -5,9 +5,20 @@ const adminCheck = require('../middleware/adminCheck');
 
 // Get all games
 router.get('/', async (req, res) => {
+    const page = parseInt(req.query.page) || 1;  // Default to page 1 if no page is specified
+    const limit = 9;
+
     try {
-        const games = await Game.find();
-        res.render('games', { games: games });
+        const games = await Game.find()
+            .skip((page - 1) * limit)
+            .limit(limit);
+        const totalGames = await Game.countDocuments();
+
+        res.render('games', {
+            games: games,
+            currentPage: page,
+            totalPages: Math.ceil(totalGames / limit)
+        });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
