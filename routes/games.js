@@ -43,6 +43,24 @@ router.post('/', adminCheck, async (req, res) => {
     }
 });
 
+// Route to handle form submission
+router.post('/createGame', async (req, res) => {
+    const { name, description, image } = req.body;
+
+    const game = new Game({
+        name,
+        description,
+        image
+    });
+
+    try {
+        await game.save();
+        res.redirect('/games'); // Redirect to the games listing page after creation
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // Update a game (admin only)
 router.patch('/:id', adminCheck, async (req, res) => {
     try {

@@ -80,6 +80,9 @@ app.use('/newswire', newsRouter);
 app.get('/login', (req, res) => {
   res.render('login')
 })
+app.get('/createGame', (req, res) => {
+  res.render('createGame')
+})
 app.get('/register', (req, res) => {
   res.render('register')
 })
