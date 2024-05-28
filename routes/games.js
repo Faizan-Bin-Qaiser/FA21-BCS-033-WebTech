@@ -26,34 +26,35 @@ router.get('/', async (req, res) => {
 });
 
 // Create a game (admin only)
-router.post('/', adminCheck, async (req, res) => {
-    const game = new Game({
-        name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-    });
+// router.post('/createGame', adminCheck, async (req, res) => {
+//     const game = new Game({
+//         name: req.body.name,
+//         description: req.body.description,
+//         image: req.body.image,
+//     });
 
-    try {
-        const newGame = await game.save();
-        res.status(201).json(newGame);
+//     try {
+//         const newGame = await game.save();
+//         res.status(201).json(newGame);
 
-        res.render("createGame")
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
+//         res.render("createGame")
+//     } catch (err) {
+//         res.status(400).json({ message: err.message });
+//     }
+// });
 
 // Route to handle form submission
-router.post('/createGame', async (req, res) => {
+router.post('/createGame', adminCheck, async (req, res) => {
     const { name, description, image } = req.body;
 
-    const game = new Game({
-        name,
-        description,
-        image
-    });
+    // const game = new Game({
+    //     name: req.body.name,
+    //     description: req.body.description,
+    //     image: req.body.image,
+    // });
 
     try {
+        const game = new Game({ name, description, image });
         await game.save();
         res.redirect('/games'); // Redirect to the games listing page after creation
     } catch (error) {

@@ -22,9 +22,9 @@
                         <button type="button" class="btn btn-primary">
                             <a href="https://wikipedia.com" target="_blank">Read Article</a>
                         </button>
-                        <% if (isAdmin) { %>
+                        <% if (isAdmin = 'true') { %>
                             <a href="/newswire/edit/<%= news._id %>" class="btn btn-warning">Edit</a>
-                            <form action="/newswire/<%= news._id %>" method="POST" style="display:inline;">
+                            <form action="/newswire/delete/<%= news._id %>" method="POST" style="display:inline;">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
