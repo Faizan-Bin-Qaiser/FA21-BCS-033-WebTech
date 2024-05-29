@@ -47,12 +47,6 @@ router.get('/', async (req, res) => {
 router.post('/createGame', adminCheck, async (req, res) => {
     const { name, description, image } = req.body;
 
-    // const game = new Game({
-    //     name: req.body.name,
-    //     description: req.body.description,
-    //     image: req.body.image,
-    // });
-
     try {
         const game = new Game({ name, description, image });
         await game.save();

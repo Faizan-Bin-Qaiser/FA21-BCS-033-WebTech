@@ -25,33 +25,27 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Create news admin bhai
+// Create news --- admin bhai
 router.get('/edit/:id', adminCheck, async (req, res) => {
     try {
         const news = await News.findById(req.params.id);
         if (!news) {
             return res.status(404).json({ error: 'News not found' });
         }
-        res.render('createGame', { news: news });
+        res.render('newswire', { news: news });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
 // Route to handle the edit form submission
-router.post('/edit/:id', adminCheck, async (req, res) => {
+router.post('/createNews', adminCheck, async (req, res) => {
+    const { name, content, image } = req.body;
+
     try {
-        const news = await News.findById(req.params.id);
-        if (!news) {
-            return res.status(404).json({ error: 'News not found' });
-        }
-
-        news.name = req.body.name;
-        news.content = req.body.content;
-        news.image = req.body.image;
-
+        const news = new News({ name, content, image });
         await news.save();
-        res.redirect('/newswire'); 
+        res.redirect('/newswire'); // Redirect to the games listing page after creation
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

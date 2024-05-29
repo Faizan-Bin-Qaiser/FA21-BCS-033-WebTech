@@ -4,7 +4,7 @@
     <%- include("includes/navbar.ejs") %>
     <h1 id="games" style="color: white;">Games</h1>
 
-    <% if (isAdmin = 'true') { %>
+    <% if (isAdmin) { %>
         <a href="/createGame" class="btn btn-primary">Create Game</a>
     <% } %>
 
@@ -17,7 +17,7 @@
                     <button class="btn btn-primary">
                         <a href="/download/<%= game._id %>" download>Buy Now</a>
                     </button>
-                    <% if (isAdmin = 'true') { %>
+                    <% if (isAdmin) { %>
                         <a href="/games/edit/<%= game._id %>" class="btn btn-warning">Edit</a>
                         <form action="/games/delete/<%= game._id %>" method="POST" style="display:inline;">
                             <input type="hidden" name="_method" value="DELETE">

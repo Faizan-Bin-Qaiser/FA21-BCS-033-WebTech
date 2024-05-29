@@ -7,9 +7,8 @@
     <div class="third">
         <h1 id="descp">NEWSWIRE</h1>
         
-        <%- console.log(isAdmin) %>
         <% if (isAdmin) { %>
-            <a href="/createGame" class="btn btn-primary">Create News</a>
+            <a href="/createNews" class="btn btn-primary">Create News</a>
         <% } %>
 
         <div class="news-container">
@@ -22,13 +21,13 @@
                         <button type="button" class="btn btn-primary">
                             <a href="https://wikipedia.com" target="_blank">Read Article</a>
                         </button>
-                        <% if (isAdmin = 'true') { %>
+                        <!-- <% if (isAdmin) { %> -->
                             <a href="/newswire/edit/<%= news._id %>" class="btn btn-warning">Edit</a>
                             <form action="/newswire/delete/<%= news._id %>" method="POST" style="display:inline;">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-                        <% } %>
+                        <!-- <% } %> -->
                     </div>
                 </div>
             <% }) %>

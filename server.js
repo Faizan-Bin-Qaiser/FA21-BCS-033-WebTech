@@ -61,9 +61,6 @@ function isAuthenticated(req, res, next) {
 
 // Routes
 app.use('/games', gamesRouter);
-// app.get('/games', (req, res) => {
-//     res.render('games', { pageTitle: 'Games' })
-// })
 
 app.get('/', (req, res) => {
     res.render('index', { pageTitle: 'Radiant' })
@@ -80,8 +77,18 @@ app.use('/newswire', newsRouter);
 app.get('/login', (req, res) => {
   res.render('login')
 })
+
+app.use('createGame', gamesRouter);
+app.use('createNews', newsRouter);
+
 app.get('/createGame', (req, res) => {
   res.render('createGame')
+})
+app.get('/createNews', (req, res) => {
+  res.render('createNews')
+})
+app.get('/editGame', (req, res) => {
+  res.render('editGame')
 })
 app.get('/register', (req, res) => {
   res.render('register')
