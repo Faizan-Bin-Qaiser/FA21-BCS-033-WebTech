@@ -1,0 +1,22 @@
+<%- include("includes/head.ejs") %>
+<link rel="stylesheet" href="./fproducts.css">
+
+</head>
+
+    <%- include("includes/navbar.ejs") %>
+<body>
+    <h1>Products</h1>
+    <div class="products-container">
+        <% products.forEach(product => { %>
+            <div class="product-card">
+                <h2><%= product.name %></h2>
+                <p><%= product.description %></p>
+                <p>Price: $<%= product.price.toFixed(2) %></p>
+                <p>Category: <%= product.category %></p>
+                <p>Featured: <%= product.isFeatured ? 'Yes' : 'No' %></p>
+                <a href="/fproducts/<%= product._id %>">View Product</a>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

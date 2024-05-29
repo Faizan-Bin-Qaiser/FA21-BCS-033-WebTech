@@ -84,7 +84,7 @@ router.post('/delete/:id', adminCheck, async (req, res) => {
             return res.status(404).json({ message: 'Cannot find news' });
         }
 
-        res.json({ message: 'Deleted news' });
+        res.redirect('newswire');
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

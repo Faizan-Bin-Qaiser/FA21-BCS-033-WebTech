@@ -90,7 +90,7 @@ router.post('/delete/:id', async (req, res) => {
         }
 
         // await game.remove();
-        res.json({ message: 'Deleted game' });
+        res.redirect('/games');
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
