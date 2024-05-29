@@ -1,0 +1,59 @@
+<%- include("includes/head.ejs") %>
+<link rel="stylesheet" href="./newswire.css">
+</head>
+<body>
+    <%- include("includes/navbar.ejs") %>
+
+    <div class="third">
+        <h1 id="descp">NEWSWIRE</h1>
+        
+        <% if (isAdmin) { %>
+            <a href="/createNews" class="btn btn-primary">Create News</a>
+        <% } %>
+
+        <div class="news-container">
+            <% newsItems.forEach(news => { %>
+                <div class="news-item">
+                    <img src="<%= news.image %>" alt="<%= news.name %> image" class="news-image">
+                    <div class="news-content">
+                        <h1><%= news.name %></h1>
+                        <p><%= news.content %></p>
+                        <button type="button" class="btn btn-primary">
+                            <a href="https://wikipedia.com" target="_blank">Read Article</a>
+                        </button>
+                        <!-- <% if (isAdmin) { %> -->
+                            <a href="/newswire/edit/<%= news._id %>" class="btn btn-warning">Edit</a>
+                            <form action="/newswire/delete/<%= news._id %>" method="POST" style="display:inline;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        <!-- <% } %> -->
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="pagination">
+            <% if (currentPage > 1) { %>
+                <a href="?page=<%= currentPage - 1 %>">Previous</a>
+            <% } %>
+            
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <% if (i === currentPage) { %>
+                    <span><strong><%= i %></strong></span>
+                <% } else { %>
+                    <a href="?page=<%= i %>"><%= i %></a>
+                <% } %>
+            <% } %>
+
+            <% if (currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>">Next</a>
+            <% } %>
+        </div>
+        <br>
+        <br>
+    </div>
+    <%- include("includes/footer.ejs") %>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<%- include("includes/head.ejs") %>
+</head>
+<body style="background-color: black;">
+    <%- include("includes/navbar.ejs") %>
+    <h1 id="games" style="color: white;">Games</h1>
+
+    <% if (isAdmin) { %>
+        <a href="/createGame" class="btn btn-primary">Create Game</a>
+    <% } %>
+
+    <div class="grid text-center">
+        <% games.forEach(game => { %>
+            <div class="g-col-4 box1 up" style="background-image: url(<%=game.image%>)">
+                <div class="content">
+                    <h2><%= game.name %></h2>
+                    <p><%= game.description %></p>
+                    <button class="btn btn-primary">
+                        <a href="/download/<%= game._id %>" download>Buy Now</a>
+                    </button>
+                    <% if (isAdmin) { %>
+                        <a href="/games/edit/<%= game._id %>" class="btn btn-warning">Edit</a>
+                        <form action="/games/delete/<%= game._id %>" method="POST" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="pagination">
+        <% if (currentPage > 1) { %>
+            <a href="?page=<%= currentPage - 1 %>">Previous</a>
+        <% } %>
+        
+        <% for (let i = 1; i <= totalPages; i++) { %>
+            <% if (i === currentPage) { %>
+                <span><strong><%= i %></strong></span>
+            <% } else { %>
+                <a href="?page=<%= i %>"><%= i %></a>
+            <% } %>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+            <a href="?page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+    </div>
+
+    <%- include("includes/footer.ejs") %>
+</body>
+</html>

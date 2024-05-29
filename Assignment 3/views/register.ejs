@@ -1,0 +1,61 @@
+<%- include("includes/head.ejs") %>
+<link rel="stylesheet" href="./register.css">
+</head>
+
+<body>
+    <%- include("includes/navbar.ejs") %>
+    
+  <main>
+    <div class="register">
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a></p>
+  </div>
+  </main>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Registration successful!');
+                    window.location.href = '/';
+                } else {
+                    alert(result.error);
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+            }
+        });
+  </script>
+</body>
+</html>
+

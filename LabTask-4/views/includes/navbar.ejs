@@ -1,0 +1,44 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container">
+      <a class="logolink" href="/">
+        <img src="images\R logo.png" alt="LOGO" width="30" height="24">
+      </a>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="/games">Games</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="api.html" target="_blank">API</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/newswire">Newswire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact" >Contact Us</a>
+        </li>
+        <li class="nav-item" script="function toggleDropdown() {
+          var dropdownContent = document.getElementById("myDropdown");
+          if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+          } else {
+              dropdownContent.style.display = "block";
+          }
+      }
+      ">
+          <div class="dropdown">
+              <button class="dropbtn">Menu +</button>
+              <div class="dropdown-content">
+                  <% if (user) { %>
+                      <p>Welcome, <%= user.name %></p>
+                      <a class="nav-link" href="/logout">Logout</a>
+                  <% } else { %>
+                      <a class="nav-link" href="/login">Login</a>
+                      <a class="nav-link" href="/register">Register</a>
+                  <% } %>
+              </div>
+          </div>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>

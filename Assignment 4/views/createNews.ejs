@@ -1,0 +1,30 @@
+<%- include("includes/head.ejs") %>
+<link rel="stylesheet" href="./register.css">
+</head>
+
+<body>
+    <%- include("includes/navbar.ejs") %>
+
+    <main>
+    <div class="register">
+        <h1>Create News</h1>
+        <form action="/newswire/createNews" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Content:</label>
+                <textarea id="description" name="description" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="text" id="image" name="image" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create News</button>
+        </form>
+    </div>
+    
+</main>
+</body>
+</html>
